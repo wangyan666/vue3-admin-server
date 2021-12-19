@@ -15,6 +15,7 @@ app.use(bodyParser())
 app.use(userRouter.routes())
 app.use(userRouter.allowedMethods()) // 允许的请求方法
 
+
 // 错误处理
 app.on('error', errorHandle)
 

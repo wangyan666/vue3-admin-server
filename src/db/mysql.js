@@ -20,7 +20,7 @@ const pool = mysql.createPool({
 
 pool.getConnection((err, con) => {
   if(err) console.log('连接失败：', err)
-  else console.log('连接成功！')
+  else console.log('连接成功!')
 })
 
 const promisePool = pool.promise()
