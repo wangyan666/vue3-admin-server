@@ -14,6 +14,10 @@
       ctx.status = 409
     break
 
+    case '2001':
+      ctx.status = 401
+    break
+
     case '9999':
       ctx.status = 500
     default:
