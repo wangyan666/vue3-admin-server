@@ -12,16 +12,6 @@ export default async(ctx, next) => {
     await next()
   } catch (error) {
     console.error('token无效:', error)
-    // switch(error.name) {
-    //   case 'TokenExpiredError':
-    //     console.error('token已过期', error)
-    //     ctx.app.emit('error', TOKEN_EXPIRED, ctx)
-    //   break
-
-    //   default:
-    //     console.log('unAuthorized！')
-    //     ctx.app.emit('error', INTERNAL_ERROR, ctx)
-    // }
     ctx.app.emit('error', INVALID_TOKEN, ctx)
   }
 }

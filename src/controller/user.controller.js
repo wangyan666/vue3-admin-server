@@ -1,5 +1,6 @@
 import service from '../service/user.service.js'
 import { INTERNAL_ERROR } from '../constants/error-types.js'
+import success from '../app/successModel.js'
 import jwt from 'jsonwebtoken'
 class UserController {
 
@@ -13,13 +14,7 @@ class UserController {
       // 响应
       console.log(`用户 ${username} 注册成功, ${new Date()}`)
       ctx.status = 200
-      ctx.body = {
-        code: 0,
-        message: '用户注册成功！',
-        result: {
-          username
-        }
-      }
+      ctx.body = success('注册成功', { username })
     } catch (error) {
       console.error(error)
       ctx.app.emit('error', INTERNAL_ERROR, ctx)
@@ -34,10 +29,7 @@ class UserController {
     // console.log(ctx.request.body);
     const token = jwt.sign(ctx.request.body, JWT_KEY, { expiresIn: 60*60 })
     console.log(`用户 ${username} 登录成功, ${new Date()}`)
-    ctx.body = {
-      code: 0,
-      token
-    }
+    ctx.body = success('登录成功', { token })
   }
 }
 
